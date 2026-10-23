@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Promoción Cultural · Almafuerte</title>
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="favicon-192.png" sizes="192x192">
+  <link rel="apple-touch-icon" href="favicon-192.png">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <section id="login-screen" class="login-screen">
+    <div class="login-card">
+      <img class="login-logo" src="logo_cultura.png" alt="Promoción Cultural">
+      <p class="eyebrow">Complejo Almafuerte</p>
+      <h1>Promoción Cultural</h1>
+      <form id="login-form" class="auth-form">
+        <p class="muted">Ingresá con tu usuario para continuar.</p>
+        <label>Correo electrónico<input id="login-email" type="email" autocomplete="username" required></label>
+        <label>Contraseña<input id="login-password" type="password" autocomplete="current-password" required></label>
+        <button class="primary" type="submit">Ingresar</button>
+        <div class="auth-links"><button type="button" data-auth-view="signup">CREAR USUARIO</button><button type="button" data-auth-view="recovery">RESTABLECER CONTRASEÑA</button><button type="button" data-auth-view="resend">REENVIAR CONFIRMACIÓN</button></div>
+      </form>
+      <form id="signup-form" class="auth-form hidden">
+        <p class="muted">Creá una cuenta con rol Operador.</p>
+        <label>Nombre completo<input id="signup-name" type="text" autocomplete="name" required></label>
+        <label>Correo electrónico<input id="signup-email" type="email" autocomplete="email" data-keep-case required></label>
+        <label>Contraseña<input id="signup-password" type="password" autocomplete="new-password" minlength="8" required></label>
+        <label>Repetir contraseña<input id="signup-password-confirm" type="password" autocomplete="new-password" minlength="8" required></label>
+        <button class="primary" type="submit">CREAR USUARIO</button>
+        <button type="button" data-auth-view="login">VOLVER AL INGRESO</button>
+      </form>
+      <form id="recovery-form" class="auth-form hidden">
+        <p class="muted">Te enviaremos un enlace para elegir una nueva contraseña.</p>
+        <label>Correo electrónico<input id="recovery-email" type="email" autocomplete="email" data-keep-case required></label>
+        <button class="primary" type="submit">ENVIAR ENLACE</button>
+        <button type="button" data-auth-view="login">VOLVER AL INGRESO</button>
+      </form>
+      <form id="resend-form" class="auth-form hidden">
+        <p class="muted">Reenviaremos el correo para confirmar una cuenta pendiente.</p>
+        <label>Correo electrónico<input id="resend-email" type="email" autocomplete="email" data-keep-case required></label>
+        <button class="primary" type="submit">REENVIAR CONFIRMACIÓN</button>
+        <button type="button" data-auth-view="login">VOLVER AL INGRESO</button>
+      </form>
+      <form id="update-password-form" class="auth-form hidden">
+        <p class="muted">Ingresá tu nueva contraseña.</p>
+        <label>Nueva contraseña<input id="new-password" type="password" autocomplete="new-password" minlength="8" required></label>
+        <label>Repetir contraseña<input id="new-password-confirm" type="password" autocomplete="new-password" minlength="8" required></label>
+        <button class="primary" type="submit">GUARDAR CONTRASEÑA</button>
+      </form>
+      <p id="login-error" class="form-error" role="alert"></p>
+    </div>
+  </section>
+
+  <div id="app" class="hidden">
+    <header class="topbar">
+      <button id="menu-button" class="menu-button" aria-label="Abrir menú">☰</button>
+      <a class="brand" href="#dashboard"><img class="topbar-logo" src="logo_cultura.png" alt=""><div>Promoción Cultural<small>Complejo Almafuerte</small></div></a>
+      <nav id="nav">
+        <a data-view="dashboard" href="#dashboard">Inicio</a>
+        <a data-view="ppls" href="#ppls">PPLs</a>
+        <a data-view="activities" href="#activities">Actividades</a>
+        <a data-view="calendar" href="#calendar">Calendario</a>
+        <a data-view="books" href="#books">Libros</a>
+        <a data-view="inventory" href="#inventory">Inventario</a>
+        <a data-view="map" href="#map">Mapa</a>
+        <a data-view="statistics" href="#statistics">Estadísticas</a>
+        <a id="users-link" data-view="users" href="#users">Usuarios</a>
+      </nav>
+      <div class="account"><strong id="account-name"></strong><small id="account-role"></small><span id="connection-status" class="connection-status">EN LÍNEA</span><button id="logout-button">Salir</button></div>
+    </header>
+    <main><div id="toast" class="toast hidden"></div><div id="content"></div></main>
+  </div>
+
+  <dialog id="modal"><form id="modal-form" method="dialog"><div class="modal-head"><h2 id="modal-title"></h2><button type="button" data-close>×</button></div><div id="modal-fields" class="form-grid"></div><div class="modal-actions"><button type="button" data-close>Cancelar</button><button class="primary" type="submit">Guardar</button></div></form></dialog>
+  <script src="app.js?v=45"></script>
+</body>
+</html>

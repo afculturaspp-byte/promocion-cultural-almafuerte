@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "Cultura · Búsqueda PPL",
+  "version": "1.0.1",
+  "description": "Realiza consultas de PPL desde Cultura sin abrir el sistema institucional.",
+  "permissions": ["storage", "offscreen"],
+  "host_permissions": ["https://10.100.10.9/*"],
+  "background": {"service_worker": "background.js"},
+  "action": {"default_title": "Configurar Búsqueda PPL", "default_popup": "options.html"},
+  "content_scripts": [{
+    "matches": ["https://*/*", "http://*/*"],
+    "js": ["content.js"],
+    "run_at": "document_start"
+  }]
+}

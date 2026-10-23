@@ -1,0 +1,16 @@
+# Credenciales y configuración local
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Archivos del sistema y temporales
+.DS_Store
+__pycache__/
+*.py[cod]
+*.zip
+
+# Materiales de trabajo que no forman parte de la aplicación publicada
+diagnostico_*.json
+capturas/
